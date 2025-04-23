@@ -2,9 +2,6 @@
 
 A simple Java desktop application built with **Java Swing** and **Gradle** that validates South African ID numbers based on official structure and checksum rules.
 
-![Invalid Example](https://raw.githubusercontent.com/Thapelo-Lekhuane/SA-ID-Validation/main/assets/invalid_id.png)
-![Valid Example](https://raw.githubusercontent.com/Thapelo-Lekhuane/SA-ID-Validation/main/assets/valid.png)
-
 ---
 
 ## ✅ Features
