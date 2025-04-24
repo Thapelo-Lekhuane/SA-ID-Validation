@@ -45,4 +45,36 @@ public class ValidateSaId {
         }
         return (sum % 10 == 0);
     }
+
+    public static String getGender(String idNumber) {
+        if (idNumber == null || idNumber.length() != 13) return "Unknown";
+        int genderDigits = Integer.parseInt(idNumber.substring(6, 10));
+        return (genderDigits < 5000) ? "Female" : "Male";
+    }
+
+    public static String getDateOfBirth(String idNumber) {
+        if (idNumber == null || idNumber.length() != 13) return "Unknown";
+        String dob = idNumber.substring(0, 6);
+        // YYMMDD
+        int year = Integer.parseInt(dob.substring(0, 2));
+        int month = Integer.parseInt(dob.substring(2, 4));
+        int day = Integer.parseInt(dob.substring(4, 6));
+        // Assume IDs are for people born between 1900 and 2099
+        int currentYear = java.time.LocalDate.now().getYear() % 100;
+        int century = (year <= currentYear) ? 2000 : 1900;
+        year += century;
+        return String.format("%04d-%02d-%02d", year, month, day);
+    }
+
+    public static int getAge(String idNumber) {
+        if (idNumber == null || idNumber.length() != 13) return -1;
+        String dob = getDateOfBirth(idNumber);
+        try {
+            java.time.LocalDate birthDate = java.time.LocalDate.parse(dob);
+            java.time.Period age = java.time.Period.between(birthDate, java.time.LocalDate.now());
+            return age.getYears();
+        } catch (Exception e) {
+            return -1;
+        }
+    }
 }
