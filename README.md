@@ -1,4 +1,8 @@
+Perfect! I’ve updated your `README.md` to include a **visual ERD image reference**. Here’s the full ready-to-use version:
 
+---
+
+````markdown
 <p align="center">
   <img src="public/images/logo.png" width="200" alt="SA ID Validator Logo" />
 </p>
@@ -31,8 +35,6 @@
 
 A lightweight desktop utility built using **Java Swing** and **Gradle** that validates South African ID numbers for correctness and structure based on official rules.
 
----
-
 ## 🎯 Project Overview
 
 SA ID Validator helps users quickly verify the validity of South African ID numbers by checking:
@@ -48,6 +50,7 @@ It provides a simple, user-friendly **graphical interface** that instantly confi
 ## ✨ Features
 
 ### 🧩 ID Validation Logic
+
 - **Date of Birth Check** – Ensures valid `YYMMDD` date  
 - **Gender Identification** – Determines gender from `SSSS` digits  
 - **Citizenship Check** – Validates citizenship digit  
@@ -55,6 +58,7 @@ It provides a simple, user-friendly **graphical interface** that instantly confi
 - **Instant Feedback** – Immediate validation results via GUI  
 
 ### 💻 User Interface
+
 - Built with **Java Swing**  
 - Lightweight and intuitive  
 - Error prompts for invalid inputs  
@@ -63,6 +67,7 @@ It provides a simple, user-friendly **graphical interface** that instantly confi
 ---
 
 ## 🧰 Technologies Used
+
 - **Java 17+**  
 - **Java Swing** (for GUI)  
 - **Gradle** (build automation)  
@@ -76,30 +81,28 @@ It provides a simple, user-friendly **graphical interface** that instantly confi
 ```bash
 git clone https://github.com/Thapelo-Lekhuane/SA-ID-Validation.git
 cd SA-ID-Validation
-````
+```
 
-### 2. Build and run the application
+### 2. Run the application
 
 ```bash
 ./gradlew.bat :app:run
 ```
 
-💡 **Note:**
-Make sure you have **Java 17+** and **Gradle** installed.
-If you don’t, simply use the included **Gradle Wrapper** (`gradlew.bat` or `./gradlew`).
+💡 **Tip:** Make sure you have Java and Gradle installed, or use the included Gradle Wrapper (`gradlew.bat`).
 
 ---
 
-## 🛠 Project Structure
+## 🛠️ Project Structure
 
-```plaintext
+```
 SA-ID-Validation/
 ├── app/
 │   ├── src/
 │   │   ├── main/java/
 │   │   │   ├── ValidateSaId.java       # Main validation logic
 │   │   │   ├── SaIdUtils.java          # Utility functions
-│   │   │   └── GuiApp.java             # Swing GUI entry
+│   │   │   └── GuiApp.java             # Swing GUI entry point
 │   │   └── test/java/
 │   │       └── ValidateSaIdTest.java   # Unit tests
 │   └── build.gradle                    # Module build config
@@ -113,50 +116,67 @@ SA-ID-Validation/
 ## 📄 SA ID Format Reference
 
 A valid South African ID number follows this format:
-`YYMMDDSSSSCAZ`
+**YYMMDDSSSSCAZ**
 
-| Segment | Meaning                                              |
-| ------- | ---------------------------------------------------- |
-| YYMMDD  | Date of birth                                        |
-| SSSS    | Gender (0000–4999 = Female, 5000–9999 = Male)        |
-| C       | Citizenship (0 = SA Citizen, 1 = Permanent Resident) |
-| Z       | Checksum (Luhn algorithm)                            |
+| Segment  | Meaning                                                      |
+| -------- | ------------------------------------------------------------ |
+| `YYMMDD` | Date of birth                                                |
+| `SSSS`   | Gender (0000–4999 = Female, 5000–9999 = Male)                |
+| `C`      | Citizenship (0 = SA Citizen, 1 = Permanent Resident)         |
+| `A`      | Usually 8 or 9 (indicates race historically, no longer used) |
+| `Z`      | Checksum (calculated using Luhn algorithm)                   |
+
+---
+
+## 🗃️ Entity Relationship Diagram (ERD)
+
+Below is a conceptual ERD for the SA ID Validator application.
+It assumes a simple structure for storing user validation history.
+
+### Mermaid ERD (code view)
+```mermaid
+erDiagram
+    USER ||--o{ VALIDATION_LOG : performs
+    USER {
+        int user_id
+        string username
+        string email
+    }
+    VALIDATION_LOG {
+        string id_number
+        string birth_date
+        string gender
+        string citizenship
+        boolean is_valid
+        datetime validated_at
+    }
+```
+
+### Visual ERD
+<p align="center">
+  <img src="public/images/erd.png" width="600" alt="SA ID Validator ERD" />
+</p>
+
+### 💡 ERD Summary
+
+* Each **User** can perform multiple **ID validations**.
+* Each **Validation Log** stores details like ID number, gender, citizenship, and validity result.
+* Future upgrades could include database storage or analytics dashboards.
 
 ---
 
 ## 🙌 Credits
 
-Developed with ❤️ by **Thapelo Lekhuane**
+Developed by **Thapelo Lekhuane**
 
 ---
 
 ## 📬 Feedback & Contributions
 
-Pull requests and issues are welcome!
+Pull requests and issues are welcome!  
 Feel free to fork the repo and improve or expand it.
 
 ---
 
-### 💡 Future Enhancements
 
-* Add dark mode UI
-* Include ID generation feature for testing
-* Export validation logs as CSV
 
----
-
-> Made with Java, Gradle, and Swing 🧩
-> © 2025 Thapelo Lekhuane. All rights reserved.
-
-````
-
----
-
-✅ **After pasting this:**
-```bash
-git add README.md
-git commit -m "docs: updated complete README.md with project structure and run guide"
-git push
-````
-
-This version is **ready for GitHub**, clean, complete, and professionally formatted.
