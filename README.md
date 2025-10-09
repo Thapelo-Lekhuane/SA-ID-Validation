@@ -29,20 +29,16 @@ A simple Java desktop application built with **Java Swing** and **Gradle** that 
 ## 🚀 How to Run the Project
 
 ### 1. Clone the repository
-```bash
+
 git clone https://github.com/Thapelo-Lekhuane/SA-ID-Validation.git
 cd SA-ID-Validation
 2. Run the application
-bash
-Copy
-Edit
+
 ./gradlew.bat :app:run
 💡 Make sure you have Java and Gradle installed, or use the Gradle Wrapper (gradlew.bat is already included).
 
 🛠 Project Structure
-css
-Copy
-Edit
+
 SA-ID-Validation/
 ├── app/
 │   ├── src/
@@ -67,9 +63,7 @@ Made by Thapelo Lekhuane
 📬 Feedback & Contributions
 Pull requests and issues are welcome! Feel free to fork the repo and improve or expand it.
 
-yaml
-Copy
-Edit
+
 
 ---
 
