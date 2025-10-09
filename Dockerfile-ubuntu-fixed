@@ -1,0 +1,35 @@
+﻿FROM eclipse-temurin:21-jre
+
+# Set non-interactive frontend to avoid prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install complete X11 and GUI dependencies for Ubuntu 24.04
+RUN apt-get update && apt-get install -y \
+    libxtst6 \
+    libxrender1 \
+    libxi6 \
+    libxrandr2 \
+    libxcursor1 \
+    libfontconfig1 \
+    libxss1 \
+    libxext6 \
+    libxfixes3 \
+    libxdamage1 \
+    libxcomposite1 \
+    libasound2t64 \
+    xvfb \
+    dbus-x11 \
+    openjdk-21-jdk \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY app/src/ ./app/src/
+
+# Compile with Java 21
+RUN javac -d classes app/src/main/java/org/example/*.java
+
+# Remove JDK to save space (keep JRE)
+RUN apt-get remove -y openjdk-21-jdk && apt-get autoremove -y
+
+ENV DISPLAY=:0
+CMD ["java", "-cp", "classes", "org.example.SAIDValidatorGUI"]

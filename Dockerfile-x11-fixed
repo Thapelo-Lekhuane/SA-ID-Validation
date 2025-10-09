@@ -1,0 +1,31 @@
+﻿FROM eclipse-temurin:21-jre-alpine
+
+# Install complete X11 and GUI dependencies for Alpine
+RUN apk update && apk add --no-cache \
+    libx11 \
+    libxtst \
+    libxrender \
+    libxi \
+    libxrandr \
+    libxcursor \
+    libxext \
+    libxfixes \
+    libxdamage \
+    libxcomposite \
+    fontconfig \
+    ttf-dejavu \
+    bash \
+    xvfb \
+    dbus \
+    && rm -rf /var/cache/apk/*
+
+WORKDIR /app
+COPY app/src/ ./app/src/
+
+# Install OpenJDK compiler temporarily to compile
+RUN apk add --no-cache openjdk21-jdk && \
+    javac -d classes app/src/main/java/org/example/*.java && \
+    apk del openjdk21-jdk
+
+ENV DISPLAY=:0
+CMD ["java", "-cp", "classes", "org.example.SAIDValidatorGUI"]
