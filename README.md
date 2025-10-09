@@ -1,3 +1,4 @@
+
 <p align="center">
   <img src="public/images/logo.png" width="200" alt="SA ID Validator Logo" />
 </p>
@@ -30,6 +31,8 @@
 
 A lightweight desktop utility built using **Java Swing** and **Gradle** that validates South African ID numbers for correctness and structure based on official rules.
 
+---
+
 ## 🎯 Project Overview
 
 SA ID Validator helps users quickly verify the validity of South African ID numbers by checking:
@@ -45,221 +48,115 @@ It provides a simple, user-friendly **graphical interface** that instantly confi
 ## ✨ Features
 
 ### 🧩 ID Validation Logic
-
-- **Date of Birth Check** – Ensures valid `YYMMDD` date
-- **Gender Identification** – Determines gender from `SSSS` digits
-- **Citizenship Check** – Validates citizenship digit
-- **Checksum Verification** – Uses the Luhn algorithm for accuracy
-- **Instant Feedback** – Immediate validation results via GUI
+- **Date of Birth Check** – Ensures valid `YYMMDD` date  
+- **Gender Identification** – Determines gender from `SSSS` digits  
+- **Citizenship Check** – Validates citizenship digit  
+- **Checksum Verification** – Uses the Luhn algorithm for accuracy  
+- **Instant Feedback** – Immediate validation results via GUI  
 
 ### 💻 User Interface
-
-- Built with **Java Swing**
-- Lightweight and intuitive
-- Error prompts for invalid inputs
-- Validation feedback in real-time
+- Built with **Java Swing**  
+- Lightweight and intuitive  
+- Error prompts for invalid inputs  
+- Validation feedback in real-time  
 
 ---
 
 ## 🧰 Technologies Used
-
-- **Java 17+**
-- **Java Swing** (for GUI)
-- **Gradle** (build automation)
-- **JUnit 5** (unit testing)
-
----
-
-## 🏗️ Architecture & Design
-
-### **Application Flow**
-
-┌────────────────────────────┐
-│ Java Swing GUI │
-│ (User input & validation) │
-├────────────────────────────┤
-│ Validation Service Layer │
-│ (Performs logical checks) │
-├────────────────────────────┤
-│ Utility / Luhn Algorithm │
-│ (Checksum validation) │
-└────────────────────────────┘
-
-
-### **Design Principles**
-
-- **Separation of Concerns** – GUI and logic layers are decoupled  
-- **Test-Driven Development (TDD)** – Validation logic covered by JUnit tests  
-- **Modular Design** – Easy to extend for future validations  
+- **Java 17+**  
+- **Java Swing** (for GUI)  
+- **Gradle** (build automation)  
+- **JUnit 5** (unit testing)  
 
 ---
 
-## 🧠 SA ID Structure Reference
+## 🚀 How to Run the Project
 
-A valid South African ID number follows this format:  
-`YYMMDDSSSSCAZ`
-
-| Segment | Meaning | Example |
-| -------- | -------- | ------- |
-| `YYMMDD` | Date of Birth | `990228` → 28 Feb 1999 |
-| `SSSS` | Gender (0000–4999 = Female, 5000–9999 = Male) | `5432` → Male |
-| `C` | Citizenship (0 = SA Citizen, 1 = Permanent Resident) | `0` |
-| `A` | Usually 8 (indicates race pre-1994, not used now) | `8` |
-| `Z` | Checksum digit (Luhn Algorithm) | `3` |
-
----
-
-## 📁 Project Structure
-
-SA-ID-Validation/
-├── app/
-│ ├── src/
-│ │ ├── main/java/
-│ │ │ ├── ValidateSaId.java # Main validation logic
-│ │ │ ├── SaIdUtils.java # Utility functions
-│ │ │ └── GuiApp.java # Swing GUI entry
-│ │ └── test/java/
-│ │ └── ValidateSaIdTest.java # Unit tests
-│ └── build.gradle # Module build config
-├── gradlew / gradlew.bat # Gradle wrapper
-├── settings.gradle # Root project settings
-└── README.md
-
-
----
-
-## 🚀 Quick Start
-
-### **Prerequisites**
-
-- Java JDK 17+ installed  
-- Gradle (or use the included Gradle Wrapper)  
-- Any IDE (e.g., IntelliJ, VS Code, or Eclipse)
-
-### **Clone the Repository**
-
-
+### 1. Clone the repository
+```bash
 git clone https://github.com/Thapelo-Lekhuane/SA-ID-Validation.git
 cd SA-ID-Validation
+````
 
-Run the application:
+### 2. Build and run the application
+
+```bash
 ./gradlew.bat :app:run
+```
 
-💡 Tip: You can also build a .jar using ./gradlew build and run it directly.
+💡 **Note:**
+Make sure you have **Java 17+** and **Gradle** installed.
+If you don’t, simply use the included **Gradle Wrapper** (`gradlew.bat` or `./gradlew`).
 
-**🧪 Testing
-Run Unit Tests:
-./gradlew test
+---
 
-Tests include:
+## 🛠 Project Structure
 
-✅ Valid and invalid ID numbers
+```plaintext
+SA-ID-Validation/
+├── app/
+│   ├── src/
+│   │   ├── main/java/
+│   │   │   ├── ValidateSaId.java       # Main validation logic
+│   │   │   ├── SaIdUtils.java          # Utility functions
+│   │   │   └── GuiApp.java             # Swing GUI entry
+│   │   └── test/java/
+│   │       └── ValidateSaIdTest.java   # Unit tests
+│   └── build.gradle                    # Module build config
+├── gradlew / gradlew.bat               # Gradle wrapper
+├── settings.gradle                     # Root project settings
+└── README.md
+```
 
-✅ Luhn checksum correctness
+---
 
-✅ Date parsing and format validation
+## 📄 SA ID Format Reference
 
-✅ Edge cases (leap years, non-numeric input)
+A valid South African ID number follows this format:
+`YYMMDDSSSSCAZ`
 
-🛡️ Validation Rules
-Algorithmic Validation
+| Segment | Meaning                                              |
+| ------- | ---------------------------------------------------- |
+| YYMMDD  | Date of birth                                        |
+| SSSS    | Gender (0000–4999 = Female, 5000–9999 = Male)        |
+| C       | Citizenship (0 = SA Citizen, 1 = Permanent Resident) |
+| Z       | Checksum (Luhn algorithm)                            |
 
-Uses Luhn algorithm for checksum validation
+---
 
-Cross-checks date validity
+## 🙌 Credits
 
-Ensures numeric input only
+Developed with ❤️ by **Thapelo Lekhuane**
 
-Rejects shorter/longer IDs
+---
 
-Error Handling
+## 📬 Feedback & Contributions
 
-Displays descriptive error messages
+Pull requests and issues are welcome!
+Feel free to fork the repo and improve or expand it.
 
-Prevents crashes on invalid input
+---
 
-Allows retry without restarting app
+### 💡 Future Enhancements
 
-📄 Example Output
-Input	Result	Message
-9902285432083	✅ Valid	ID Number is valid
-0102311234081	❌ Invalid	Invalid date of birth
-9902285432084	❌ Invalid	Checksum failed
-🔧 Development
-Available Commands
-./gradlew run         # Run the GUI
-./gradlew build       # Build the app
-./gradlew test        # Run unit tests
+* Add dark mode UI
+* Include ID generation feature for testing
+* Export validation logs as CSV
 
-Environment
-Tool	Version	Required
-Java	17+	✅
-Gradle	7+	✅
-JUnit	5	✅
-🧱 Planned Improvements (Roadmap)
-Phase 1: Core Validation ✅
+---
 
- Date of Birth validation
+> Made with Java, Gradle, and Swing 🧩
+> © 2025 Thapelo Lekhuane. All rights reserved.
 
- Gender digit logic
+````
 
- Citizenship validation
+---
 
- Luhn checksum verification
+✅ **After pasting this:**
+```bash
+git add README.md
+git commit -m "docs: updated complete README.md with project structure and run guide"
+git push
+````
 
-Phase 2: GUI Enhancements 🚧
-
- Add dark/light mode
-
- Keyboard shortcuts
-
- Improved error popups
-
-Phase 3: Extended Features 📋
-
- Bulk validation from CSV file
-
- Export validation results
-
- REST API endpoint
-
-🤝 Contributing
-
-Contributions are welcome!
-If you’d like to improve the project, follow these steps:
-
-Fork the repository
-
-Create a new branch: git checkout -b feature/new-feature
-
-Commit your changes: git commit -m "Add new feature"
-
-Push to your fork: git push origin feature/new-feature
-
-Open a Pull Request
-
-📞 Support
-
-Issues: GitHub Issues
-
-Discussions: Coming soon
-
-Email: thapelolekhuane.dev@gmail.com
-
-📄 License
-
-This project is licensed under the MIT License — see the LICENSE
- file for details.
-
-👨‍💻 Author
-
-Thapelo Lekhuane
-
-GitHub: Thapelo-Lekhuane
-
-LinkedIn: Thapelo Lekhuane
-
-Portfolio: Coming soon
-
-<p align="center"> ⭐️ <b>If you find this project helpful, please <a href="https://github.com/Thapelo-Lekhuane/SA-ID-Validation/stargazers">star it on GitHub</a>!</b> ⭐️ </p> <p align="center"> <a href="https://buymeacoffee.com/thapelo" target="_blank"><img src="https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee" /></a> </p>
-<p align="center"> <b>Made with ❤️ by Thapelo Lekhuane for developers and users who value accuracy.</b> </p> ```
+This version is **ready for GitHub**, clean, complete, and professionally formatted.
