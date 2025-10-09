@@ -150,12 +150,6 @@ erDiagram
     }
 ```
 
-### Visual ERD
-
-<p align="center">
-  <img src="assets/erd.png" width="600" alt="SA ID Validator ERD" />
-</p>
-
 ### ERD Summary
 
 * Each **User** can perform multiple **ID validations**
