@@ -1,4 +1,3 @@
-Got it! We’ll keep the tech stack as **logos/badges** like your original version, and remove all emojis elsewhere. Here’s the fully cleaned-up, preview-ready README with **professional icons/logos for the tech stack**:
 
 ---
 
@@ -154,7 +153,7 @@ erDiagram
 ### Visual ERD
 
 <p align="center">
-  <img src="public/images/erd.png" width="600" alt="SA ID Validator ERD" />
+  <img src="assets/erd.png" width="600" alt="SA ID Validator ERD" />
 </p>
 
 ### ERD Summary
