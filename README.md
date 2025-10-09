@@ -121,78 +121,78 @@ SA ID Validator is a comprehensive validation suite that provides both desktop a
 
 ## 🚀 Quick Start
 
-### 🖥️ Desktop Version (Docker)
+### 🖥️ Desktop Application (Local)
 
-#### Prerequisites
-- **Docker Desktop** installed
-- **X11 Server**: VcXsrv (Windows) / XQuartz (macOS) / Built-in (Linux)
+**Three simple steps to run the SA ID Validator:**
 
-#### Quick Launch
-Pull and run the containerized desktop application
-docker run -it --rm -e DISPLAY=host.docker.internal:0.0 sa-id-validator-desktop
+#### 1. Install Java 21
+Download and install **Java 21 OpenJDK**:
+- **Windows/macOS**: [Download from OpenJDK.org](https://openjdk.org/install/)
+- **Linux**: `sudo apt install openjdk-21-jdk` (Ubuntu/Debian)
 
-For Linux users
-docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix sa-id-validator-desktop
-
-text
-
-### 🌐 Web Version (Local Testing)
-
-Clone repository and open web version
-git clone https://github.com/Thapelo-Lekhuane/SA-ID-Validation.git
-cd SA-ID-Validation
-
-Open index.html in your browser
-Or serve with a local server:
-python -m http.server 8000
-
-Then visit: http://localhost:8000
-text
-
-### 🛠️ Development Setup
-
-#### 1. Clone the repository
+#### 2. Clone Repository
 git clone https://github.com/Thapelo-Lekhuane/SA-ID-Validation.git
 cd SA-ID-Validation
 
 text
 
-#### 2. Run desktop application locally
-Using Gradle wrapper
-./gradlew :app:run
-
-On Windows
+#### 3. Run Application
+Windows:
 ./gradlew.bat :app:run
 
+macOS/Linux:
+./gradlew :app:run
+
 text
 
-#### 3. Build Docker image
-Build desktop version
-docker build -t sa-id-validator-desktop .
+**That's it!** The professional Swing GUI will launch automatically.
 
-Run with GUI forwarding
+---
+
+### 🌐 Web Version (Browser)
+
+Open index.html in any web browser
+Or serve locally:
+python -m http.server 8000
+
+Visit: http://localhost:8000
+text
+
+### 🐳 Docker Version (Advanced)
+
+Requires Docker + VcXsrv (Windows) / XQuartz (macOS)
 docker run -it --rm -e DISPLAY=host.docker.internal:0.0 sa-id-validator-desktop
 
 text
 
 ---
 
-📁 Project Structure
+## 💡 Usage
+
+1. **Enter** a 13-digit South African ID number
+2. **Click "Validate"** or press **Enter**
+3. **View results**: Age, gender, citizenship, and validity status
+4. **Check history** table for previous validations
+
+---
+
+## 📁 Project Structure
+
 SA-ID-Validation/
 ├── app/
-│   ├── build.gradle
-│   └── src/
-│       ├── main/java/org/example/
-│       │   ├── App.java
-│       │   ├── ValidateSaId.java
-│       │   └── SAIDValidatorGUI.java
-│       └── test/java/org/example/
-│           ├── AppTest.java
-│           └── ValidateSaIdTest.java
+│ ├── build.gradle
+│ └── src/
+│ ├── main/java/org/example/
+│ │ ├── App.java
+│ │ ├── ValidateSaId.java
+│ │ └── SAIDValidatorGUI.java
+│ └── test/java/org/example/
+│ ├── AppTest.java
+│ └── ValidateSaIdTest.java
 ├── gradle/wrapper/
 ├── web-version/
-│   ├── index.html
-│   └── script.js
+│ ├── index.html
+│ └── script.js
 ├── scripts/
 ├── public/images/
 ├── Dockerfile
@@ -202,6 +202,8 @@ SA-ID-Validation/
 ├── gradlew
 ├── settings.gradle
 └── README.md
+
+text
 
 ---
 
@@ -260,27 +262,36 @@ A valid South African ID number follows this format: **YYMMDDSSSSCAZ**
 | `800101500908`  | ❌ Invalid | Too short (12 digits) |
 
 ---
-📊 Entity Relationship Diagram (ERD)
-erDiagram
-    USER ||--o{ VALIDATION_LOG : performs
 
-    USER {
-        int user_id
-        string username
-        string email
-        datetime created_at
-    }
+## 📊 Entity Relationship Diagram
 
-    VALIDATION_LOG {
-        int validation_id
-        int user_id
-        string id_number
-        string birth_date
-        string gender
-        string citizenship
-        boolean is_valid
-        datetime validated_at
-    }
+<p align="center">
+  <img src="assets/erd.png" width="600" alt="SA ID Validator ERD" />
+</p>
+
+### Database Schema Overview
+
+**USER Entity:**
+- `user_id` (Primary Key) - Unique identifier for each user
+- `username` - User's display name
+- `email` - User's email address
+- `created_at` - Account creation timestamp
+
+**VALIDATION_LOG Entity:**
+- `validation_id` (Primary Key) - Unique identifier for each validation
+- `user_id` (Foreign Key) - Links to USER table
+- `id_number` - The SA ID number being validated
+- `birth_date` - Extracted date of birth from ID
+- `gender` - Extracted gender (Male/Female)
+- `citizenship` - Citizenship status (SA Citizen/Permanent Resident)
+- `is_valid` - Boolean result of validation
+- `validated_at` - Timestamp of validation
+
+**Relationship:**
+- Each User can perform multiple ID validations (1:Many relationship)
+- Complete audit trail of all validation attempts
+- Simple, scalable design for future enhancements
+
 ---
 
 ## 📈 Version History
