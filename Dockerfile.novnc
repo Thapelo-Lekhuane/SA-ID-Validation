@@ -1,0 +1,55 @@
+﻿FROM ubuntu:20.04
+
+# Prevent interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install desktop environment, VNC, noVNC, and Java
+RUN apt-get update && apt-get install -y \
+    openjdk-21-jdk \
+    xfce4 xfce4-goodies \
+    tightvncserver \
+    novnc \
+    websockify \
+    supervisor \
+    wget \
+    curl \
+    firefox \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up VNC
+RUN mkdir -p /root/.vnc \
+    && echo "sa-id-validator" | vncpasswd -f > /root/.vnc/passwd \
+    && chmod 600 /root/.vnc/passwd
+
+# Copy your Java application
+WORKDIR /app
+COPY app/build/classes/java/main/ ./classes/
+COPY app/src/main/java/org/example/ ./src/
+
+# Create startup script
+RUN echo '#!/bin/bash\n\
+export DISPLAY=:1\n\
+vncserver :1 -geometry 1024x768 -depth 24\n\
+websockify --web=/usr/share/novnc 6080 localhost:5901 &\n\
+sleep 5\n\
+cd /app\n\
+java -cp classes org.example.SAIDValidatorGUI\n\
+' > /start.sh \
+    && chmod +x /start.sh
+
+# Supervisor configuration
+RUN echo '[supervisord]\n\
+nodaemon=true\n\
+user=root\n\
+\n\
+[program:vnc]\n\
+command=/start.sh\n\
+autostart=true\n\
+autorestart=true\n\
+' > /etc/supervisor/conf.d/supervisord.conf
+
+# Expose noVNC port
+EXPOSE 6080
+
+CMD ["/usr/bin/supervisord"]
