@@ -3,314 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SA ID Validator</title>
+    <title>SA ID Validator - Professional South African ID Validation</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: Arial, sans-serif; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            padding: 20px;
         }
-        .validator { 
+        .container { 
             background: white; 
-            border-radius: 8px; 
-            padding: 30px; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            padding: 2rem; 
+            border-radius: 15px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            max-width: 600px; 
+            width: 100%; 
         }
         h1 { 
-            font-size: 48px; 
-            margin-bottom: 30px; 
-            color: #3c3c3c; 
-            font-weight: bold;
+            color: #333; 
+            text-align: center; 
+            margin-bottom: 1.5rem; 
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        .input-section { 
-            display: flex; 
-            gap: 15px; 
-            margin-bottom: 20px; 
+        .input-group { margin-bottom: 1.5rem; }
+        label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            font-weight: bold; 
+            color: #555; 
+            font-size: 1.1rem;
         }
-        input[type="text"] { 
-            flex: 1; 
+        input { 
+            width: 100%; 
             padding: 15px; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
-            font-size: 16px; 
+            border: 2px solid #ddd; 
+            border-radius: 10px; 
+            font-size: 1.1rem; 
+            transition: border-color 0.3s;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+        input:focus { 
+            outline: none; 
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
         }
         button { 
-            padding: 15px 30px; 
-            background: #3767b9; 
+            width: 100%; 
+            padding: 15px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
             color: white; 
             border: none; 
-            border-radius: 4px; 
-            font-size: 16px; 
+            border-radius: 10px; 
+            font-size: 1.2rem; 
+            font-weight: bold; 
             cursor: pointer; 
-            font-weight: bold;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         button:hover { 
-            background: #2557a9; 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         .result { 
-            background: #dff0d8; 
-            border: 1px solid #b1cea6; 
-            color: #468847; 
-            padding: 20px; 
-            border-radius: 4px; 
-            margin-top: 20px; 
-            display: none; 
-        }
-        .result.invalid {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-        }
-        .result h3 {
-            margin: 0 0 15px 0;
-            font-size: 24px;
-        }
-        .checkmark {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            background: #468847;
-            border-radius: 50%;
-            margin-right: 10px;
-            text-align: center;
-            line-height: 24px;
-            color: white;
+            margin-top: 1.5rem; 
+            padding: 1.5rem; 
+            border-radius: 10px; 
             font-weight: bold;
+            font-size: 1.1rem;
         }
-        .history { 
-            margin-top: 30px; 
+        .valid { 
+            background: #d4edda; 
+            color: #155724; 
+            border: 2px solid #c3e6cb; 
         }
-        .history h3 {
+        .invalid { 
+            background: #f8d7da; 
+            color: #721c24; 
+            border: 2px solid #f5c6cb; 
+        }
+        .info { 
+            background: #e8f4fd; 
+            color: #0c5460; 
+            border: 2px solid #bee5eb; 
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+        .info-item {
+            margin: 8px 0;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 10px;
         }
-        table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            margin-top: 15px;
+        .icon { font-size: 1.3rem; }
+        .examples {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.9rem;
         }
-        th, td { 
-            padding: 12px; 
-            text-align: left; 
-            border-bottom: 1px solid #ddd; 
+        .examples h3 {
+            color: #495057;
+            margin-bottom: 0.5rem;
         }
-        th { 
-            background-color: #f5f5f5; 
-            font-weight: bold;
+        .examples p {
+            margin: 0.25rem 0;
+            color: #6c757d;
         }
-        tr:hover {
-            background-color: #f9f9f9;
-        }
-        .clear-btn {
-            font-size: 14px;
-            padding: 8px 16px;
-            background: #6c757d;
-        }
-        .clear-btn:hover {
-            background: #5a6268;
+        @media (max-width: 480px) {
+            .container { padding: 1.5rem; }
+            h1 { font-size: 1.6rem; }
+            input, button { padding: 12px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
-    <div class="validator">
-        <h1>SA ID Validator</h1>
-        <div class="input-section">
-            <input type="text" id="idInput" placeholder="Enter ID number" maxlength="13">
-            <button onclick="validateID()">Validate</button>
+    <div class="container">
+        <h1><span></span>SA ID Validator</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+            Professional South African ID Number Validation System
+        </p>
+        
+        <div class="input-group">
+            <label for="idNumber">Enter South African ID Number:</label>
+            <input type="text" 
+                   id="idNumber" 
+                   placeholder="e.g., 8001015009087" 
+                   maxlength="13"
+                   autocomplete="off">
         </div>
-        <div id="result" class="result">
-            <h3><span class="checkmark">✓</span><span id="resultTitle">Valid</span></h3>
-            <div id="resultText"></div>
-        </div>
-        <div class="history">
-            <h3>
-                Validation History 
-                <button class="clear-btn" onclick="clearHistory()">Clear</button>
-            </h3>
-            <table>
-                <thead>
-                    <tr><th>ID Number</th><th>Result</th></tr>
-                </thead>
-                <tbody id="historyTable">
-                    <tr><td>8001015009087</td><td>Valid</td></tr>
-                </tbody>
-            </table>
+        
+        <button onclick="validateID()" id="validateBtn">
+             Validate ID Number
+        </button>
+        
+        <div id="result"></div>
+        
+        <div class="examples">
+            <h3> Test Examples:</h3>
+            <p><strong>Valid:</strong> 8001015009087 (Male, born 1980)</p>
+            <p><strong>Valid:</strong> 7506235016088 (Female, born 1975)</p>
+            <p><strong>Invalid:</strong> 1234567890123 (Fails checksum)</p>
         </div>
     </div>
 
-    <script>
-        // SA ID Validator JavaScript - Inline Version
-        let validationHistory = JSON.parse(localStorage.getItem('validationHistory')) || [
-            { id: '8001015009087', result: 'Valid' }
-        ];
-
-        // Load history on page load
-        window.onload = function() {
-            updateHistoryTable();
-        };
-
-        function validateID() {
-            const idInput = document.getElementById('idInput');
-            const idNumber = idInput.value.trim();
-            
-            if (!idNumber) {
-                alert('Please enter an ID number');
-                return;
-            }
-            
-            if (idNumber.length !== 13) {
-                showResult(false, 'ID number must be 13 digits');
-                addToHistory(idNumber, 'Invalid - Wrong length');
-                return;
-            }
-            
-            if (!/^\d{13}$/.test(idNumber)) {
-                showResult(false, 'ID number must contain only digits');
-                addToHistory(idNumber, 'Invalid - Not numeric');
-                return;
-            }
-            
-            // Validate using SA ID rules
-            if (isValidSAID(idNumber)) {
-                const info = extractIDInfo(idNumber);
-                showResult(true, info);
-                addToHistory(idNumber, 'Valid');
-            } else {
-                showResult(false, 'Invalid SA ID number');
-                addToHistory(idNumber, 'Invalid');
-            }
-            
-            idInput.value = '';
-        }
-
-        function isValidSAID(idNumber) {
-            // Check date
-            const dob = idNumber.substring(0, 6);
-            if (!isValidDate(dob)) return false;
-            
-            // Luhn algorithm
-            return luhnCheck(idNumber);
-        }
-
-        function isValidDate(dob) {
-            const year = parseInt(dob.substring(0, 2));
-            const month = parseInt(dob.substring(2, 4));
-            const day = parseInt(dob.substring(4, 6));
-            
-            if (month < 1 || month > 12) return false;
-            if (day < 1 || day > 31) return false;
-            
-            const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-            return day <= daysInMonth[month - 1];
-        }
-
-        function luhnCheck(idNumber) {
-            let sum = 0;
-            let alternate = false;
-            
-            for (let i = idNumber.length - 1; i >= 0; i--) {
-                let n = parseInt(idNumber.charAt(i));
-                if (alternate) {
-                    n *= 2;
-                    if (n > 9) n = (n % 10) + 1;
-                }
-                sum += n;
-                alternate = !alternate;
-            }
-            
-            return (sum % 10 === 0);
-        }
-
-        function extractIDInfo(idNumber) {
-            const year = parseInt(idNumber.substring(0, 2));
-            const month = idNumber.substring(2, 4);
-            const day = idNumber.substring(4, 6);
-            
-            // Determine century
-            const currentYear = new Date().getFullYear() % 100;
-            const fullYear = (year <= currentYear + 5) ? 2000 + year : 1900 + year;
-            
-            // Calculate age
-            const today = new Date();
-            const birthDate = new Date(fullYear, parseInt(month) - 1, parseInt(day));
-            const age = today.getFullYear() - birthDate.getFullYear() - 
-                        (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate()) ? 1 : 0);
-            
-            // Determine gender
-            const genderDigits = parseInt(idNumber.substring(6, 10));
-            const gender = genderDigits < 5000 ? 'Female' : 'Male';
-            
-            // Determine citizenship
-            const citizenship = idNumber.charAt(10) === '0' ? 'SA Citizen' : 'Permanent Resident';
-            
-            return {
-                dob: fullYear + '-' + month + '-' + day,
-                age: age,
-                gender: gender,
-                citizenship: citizenship
-            };
-        }
-
-        function showResult(isValid, info) {
-            const resultDiv = document.getElementById('result');
-            const resultTitle = document.getElementById('resultTitle');
-            const resultText = document.getElementById('resultText');
-            
-            if (isValid && typeof info === 'object') {
-                resultDiv.className = 'result';
-                resultDiv.style.display = 'block';
-                resultTitle.textContent = 'Valid';
-                resultText.innerHTML = 
-                    '<strong>Date of birth:</strong> ' + info.dob + '<br>' +
-                    '<strong>Age:</strong> ' + info.age + '<br>' +
-                    '<strong>Gender:</strong> ' + info.gender + '<br>' +
-                    '<strong>Citizenship:</strong> ' + info.citizenship;
-            } else {
-                resultDiv.className = 'result invalid';
-                resultDiv.style.display = 'block';
-                resultTitle.textContent = 'Invalid';
-                resultText.innerHTML = '<strong>Error:</strong> ' + info;
-            }
-        }
-
-        function addToHistory(idNumber, result) {
-            validationHistory.unshift({ id: idNumber, result: result });
-            
-            // Keep only last 10 entries
-            if (validationHistory.length > 10) {
-                validationHistory = validationHistory.slice(0, 10);
-            }
-            
-            localStorage.setItem('validationHistory', JSON.stringify(validationHistory));
-            updateHistoryTable();
-        }
-
-        function updateHistoryTable() {
-            const tbody = document.getElementById('historyTable');
-            tbody.innerHTML = '';
-            
-            validationHistory.forEach(function(entry) {
-                const row = tbody.insertRow();
-                row.insertCell(0).textContent = entry.id;
-                row.insertCell(1).textContent = entry.result;
-            });
-        }
-
-        function clearHistory() {
-            validationHistory = [];
-            localStorage.removeItem('validationHistory');
-            updateHistoryTable();
-        }
-
-        // Enter key support
-        document.getElementById('idInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                validateID();
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
