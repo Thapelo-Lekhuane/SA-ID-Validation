@@ -1,16 +1,24 @@
+
+
+
+
 # SA ID Validator
 
 <p align="center">
-  <img src="public/images/logo.png" width="200" alt="SA ID Validator Logo" />
+  <img src="https://img.shields.io/badge/📇_SA_ID-VALIDATOR-2E8B57?style=for-the-badge&labelColor=20B2AA&color=2F4F4F&logoColor=white" alt="SA ID Validator" width="350"/>
 </p>
 
 <p align="center">
-  <strong>SA ID Validator</strong>
+  <img src="https://img.shields.io/badge/🇿🇦_Professional_South_African-ID_Validation_System-20B2AA?style=flat&labelColor=2E8B57&color=20B2AA" alt="Professional System"/>
 </p>
 
 <p align="center">
   A comprehensive South African ID validation system available as both a Java Swing desktop application and a modern web application.
 </p>
+
+
+
+
 
 <p align="center">
   <a href="https://www.java.com/" target="_blank"><img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" alt="Java" /></a>
