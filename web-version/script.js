@@ -1,57 +1,128 @@
-﻿// SA ID Validator JavaScript
-let validationHistory = JSON.parse(localStorage.getItem('validationHistory')) || [
-    { id: '8001015009087', result: 'Valid' }
-];
+﻿// SA ID Validator - Exact match to screenshot functionality
 
-// Load history on page load
-window.onload = function() {
-    updateHistoryTable();
-};
+let validationHistory = [];
 
-function validateID() {
+function validateId() {
     const idInput = document.getElementById('idInput');
-    const idNumber = idInput.value.trim();
+    const id = idInput.value.trim();
     
-    if (!idNumber) {
+    if (!id) {
         alert('Please enter an ID number');
         return;
     }
     
-    if (idNumber.length !== 13) {
-        showResult(false, 'ID number must be 13 digits');
-        addToHistory(idNumber, 'Invalid - Wrong length');
-        return;
-    }
-    
-    if (!/^\d{13}$/.test(idNumber)) {
-        showResult(false, 'ID number must contain only digits');
-        addToHistory(idNumber, 'Invalid - Not numeric');
-        return;
-    }
-    
-    // Validate using Luhn algorithm and SA ID rules
-    if (isValidSAID(idNumber)) {
-        const info = extractIDInfo(idNumber);
-        showResult(true, info);
-        addToHistory(idNumber, 'Valid');
-    } else {
-        showResult(false, 'Invalid SA ID number');
-        addToHistory(idNumber, 'Invalid');
-    }
-    
-    idInput.value = '';
+    const isValid = isIdNumberValid(id);
+    displayResult(id, isValid);
+    addToHistory(id, isValid);
+    updateHistoryTable();
 }
 
-function isValidSAID(idNumber) {
-    // Check date
+function displayResult(id, isValid) {
+    const resultBox = document.getElementById('resultBox');
+    const resultIcon = document.getElementById('resultIcon');
+    const resultText = document.getElementById('resultText');
+    const resultDetails = document.getElementById('resultDetails');
+    
+    resultBox.classList.add('show');
+    
+    if (isValid) {
+        resultBox.classList.remove('invalid');
+        resultIcon.classList.remove('invalid');
+        resultText.classList.remove('invalid');
+        
+        resultIcon.textContent = '✓';
+        resultText.textContent = 'Valid';
+        
+        // Extract and display information
+        const dob = formatDateOfBirth(id);
+        const age = getAge(id);
+        const gender = getGender(id);
+        const citizenship = getCitizenshipStatus(id);
+        
+        document.getElementById('dobDetail').textContent = `Date of birth: ${dob}`;
+        document.getElementById('ageDetail').textContent = `Age: ${age}`;
+        document.getElementById('genderDetail').textContent = `Gender: ${gender}`;
+        document.getElementById('citizenshipDetail').textContent = `Citizenship: ${citizenship}`;
+        
+        // Remove invalid class from details
+        document.querySelectorAll('.result-detail').forEach(el => {
+            el.classList.remove('invalid');
+        });
+        
+    } else {
+        resultBox.classList.add('invalid');
+        resultIcon.classList.add('invalid');
+        resultText.classList.add('invalid');
+        
+        resultIcon.textContent = '✗';
+        resultText.textContent = 'Invalid';
+        
+        document.getElementById('dobDetail').textContent = '';
+        document.getElementById('ageDetail').textContent = '';
+        document.getElementById('genderDetail').textContent = '';
+        document.getElementById('citizenshipDetail').textContent = '';
+        
+        // Add invalid class to details
+        document.querySelectorAll('.result-detail').forEach(el => {
+            el.classList.add('invalid');
+        });
+    }
+}
+
+function addToHistory(id, isValid) {
+    validationHistory.unshift({
+        id: id,
+        result: isValid ? 'Valid' : 'Invalid',
+        timestamp: new Date()
+    });
+    
+    // Keep only last 50 entries
+    if (validationHistory.length > 50) {
+        validationHistory = validationHistory.slice(0, 50);
+    }
+}
+
+function updateHistoryTable() {
+    const historyBody = document.getElementById('historyBody');
+    
+    if (validationHistory.length === 0) {
+        historyBody.innerHTML = '<tr><td colspan="2" class="no-history">No validation history yet</td></tr>';
+        return;
+    }
+    
+    historyBody.innerHTML = validationHistory.map(entry => 
+        `<tr>
+            <td>${entry.id}</td>
+            <td>${entry.result}</td>
+        </tr>`
+    ).join('');
+}
+
+function clearHistory() {
+    validationHistory = [];
+    updateHistoryTable();
+}
+
+// Validation logic (same as before)
+function isIdNumberValid(idNumber) {
+    if (!idNumber || idNumber.length !== 13) return false;
+    if (!/^\d{13}$/.test(idNumber)) return false;
+    
     const dob = idNumber.substring(0, 6);
     if (!isValidDate(dob)) return false;
     
-    // Luhn algorithm
+    const gender = parseInt(idNumber.substring(6, 10));
+    if (gender < 0 || gender > 9999) return false;
+    
+    const citizenship = idNumber.charAt(10);
+    if (citizenship !== '0' && citizenship !== '1') return false;
+    
     return luhnCheck(idNumber);
 }
 
 function isValidDate(dob) {
+    if (dob.length !== 6) return false;
+    
     const year = parseInt(dob.substring(0, 2));
     const month = parseInt(dob.substring(2, 4));
     const day = parseInt(dob.substring(4, 6));
@@ -68,102 +139,73 @@ function luhnCheck(idNumber) {
     let alternate = false;
     
     for (let i = idNumber.length - 1; i >= 0; i--) {
-        let n = parseInt(idNumber.charAt(i));
+        let digit = parseInt(idNumber.charAt(i));
+        
         if (alternate) {
-            n *= 2;
-            if (n > 9) n = (n % 10) + 1;
+            digit *= 2;
+            if (digit > 9) {
+                digit = Math.floor(digit / 10) + (digit % 10);
+            }
         }
-        sum += n;
+        
+        sum += digit;
         alternate = !alternate;
     }
     
-    return (sum % 10 === 0);
+    return (sum % 10) === 0;
 }
 
-function extractIDInfo(idNumber) {
-    const year = parseInt(idNumber.substring(0, 2));
-    const month = idNumber.substring(2, 4);
-    const day = idNumber.substring(4, 6);
-    
-    // Determine century
-    const currentYear = new Date().getFullYear() % 100;
-    const fullYear = (year <= currentYear + 5) ? 2000 + year : 1900 + year;
-    
-    // Calculate age
-    const today = new Date();
-    const birthDate = new Date(fullYear, parseInt(month) - 1, parseInt(day));
-    const age = today.getFullYear() - birthDate.getFullYear() - 
-                (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate()) ? 1 : 0);
-    
-    // Determine gender
+function getGender(idNumber) {
     const genderDigits = parseInt(idNumber.substring(6, 10));
-    const gender = genderDigits < 5000 ? 'Female' : 'Male';
-    
-    // Determine citizenship
-    const citizenship = idNumber.charAt(10) === '0' ? 'SA Citizen' : 'Permanent Resident';
-    
-    return {
-        dob: \\-\-\\,
-        age: age,
-        gender: gender,
-        citizenship: citizenship
-    };
+    return genderDigits < 5000 ? "Female" : "Male";
 }
 
-function showResult(isValid, info) {
-    const resultDiv = document.getElementById('result');
-    const resultText = document.getElementById('resultText');
+function formatDateOfBirth(idNumber) {
+    const dobString = idNumber.substring(0, 6);
+    const year = parseInt(dobString.substring(0, 2));
+    const month = parseInt(dobString.substring(2, 4));
+    const day = parseInt(dobString.substring(4, 6));
     
-    if (isValid && typeof info === 'object') {
-        resultDiv.className = 'result valid';
-        resultDiv.style.display = 'block';
-        resultText.innerHTML = \
-            <strong>Date of birth:</strong> \<br>
-            <strong>Age:</strong> \<br>
-            <strong>Gender:</strong> \<br>
-            <strong>Citizenship:</strong> \
-        \;
-    } else {
-        resultDiv.className = 'result invalid';
-        resultDiv.style.display = 'block';
-        resultDiv.style.background = '#f8d7da';
-        resultDiv.style.border = '1px solid #f5c6cb';
-        resultText.innerHTML = \<strong> Invalid:</strong> \\;
-    }
+    const currentYear = new Date().getFullYear() % 100;
+    const century = year <= currentYear ? 2000 : 1900;
+    const fullYear = year + century;
+    
+    return `${fullYear}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 }
 
-function addToHistory(idNumber, result) {
-    validationHistory.unshift({ id: idNumber, result: result });
+function getAge(idNumber) {
+    const dobString = idNumber.substring(0, 6);
+    const year = parseInt(dobString.substring(0, 2));
+    const month = parseInt(dobString.substring(2, 4));
+    const day = parseInt(dobString.substring(4, 6));
     
-    // Keep only last 10 entries
-    if (validationHistory.length > 10) {
-        validationHistory = validationHistory.slice(0, 10);
+    const currentYear = new Date().getFullYear() % 100;
+    const century = year <= currentYear ? 2000 : 1900;
+    const fullYear = year + century;
+    
+    const today = new Date();
+    const birthDate = new Date(fullYear, month - 1, day);
+    
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
     }
     
-    localStorage.setItem('validationHistory', JSON.stringify(validationHistory));
-    updateHistoryTable();
+    return age;
 }
 
-function updateHistoryTable() {
-    const tbody = document.getElementById('historyTable');
-    tbody.innerHTML = '';
-    
-    validationHistory.forEach(entry => {
-        const row = tbody.insertRow();
-        row.insertCell(0).textContent = entry.id;
-        row.insertCell(1).textContent = entry.result;
-    });
-}
-
-function clearHistory() {
-    validationHistory = [];
-    localStorage.removeItem('validationHistory');
-    updateHistoryTable();
+function getCitizenshipStatus(idNumber) {
+    const citizenship = idNumber.charAt(10);
+    return citizenship === '0' ? 'SA Citizen' : 'Permanent Resident';
 }
 
 // Enter key support
-document.getElementById('idInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        validateID();
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('idInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            validateId();
+        }
+    });
 });
