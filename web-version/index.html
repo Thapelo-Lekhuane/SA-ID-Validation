@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>SA ID Validator</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .validator { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .input-section { display: flex; gap: 10px; margin-bottom: 20px; }
+        input[type="text"] { flex: 1; padding: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        button { padding: 15px 30px; background: #3767b9; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+        .result { background: #dff0d8; border: 1px solid #d6e9c6; padding: 20px; border-radius: 4px; margin-top: 20px; display: none; }
+        .history { margin-top: 30px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f5f5f5; }
+    </style>
+</head>
+<body>
+    <div class="validator">
+        <h1>SA ID Validator</h1>
+        <div class="input-section">
+            <input type="text" id="idInput" placeholder="Enter ID number" maxlength="13">
+            <button onclick="validateID()">Validate</button>
+        </div>
+        <div id="result" class="result">
+            <h3>✓ Valid</h3>
+            <p id="resultText"></p>
+        </div>
+        <div class="history">
+            <h3>Validation History <button onclick="clearHistory()" style="float: right; font-size: 12px; padding: 5px 10px;">Clear</button></h3>
+            <table>
+                <thead>
+                    <tr><th>ID Number</th><th>Result</th></tr>
+                </thead>
+                <tbody id="historyTable">
+                    <tr><td>8001015009087</td><td>Valid</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿FROM openjdk:11-jdk-slim as builder
+
+# Install GUI dependencies for runtime
+RUN apt-get update && apt-get install -y \
+    libxtst6 \
+    libxrender1 \
+    libxi6 \
+    libxrandr2 \
+    libxcursor1 \
+    libfontconfig1 \
+    libxss1 \
+    libgconf-2-4 \
+    libxcomposite1 \
+    libasound2 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy gradle files
+COPY gradle/ ./gradle/
+COPY gradlew ./
+COPY gradlew.bat ./
+COPY gradle.properties ./
+COPY settings.gradle ./
+
+# Copy app build file
+COPY app/build.gradle ./app/
+
+# Copy source code
+COPY app/src/ ./app/src/
+
+# Make gradlew executable
+RUN chmod +x gradlew
+
+# Build the application
+RUN ./gradlew :app:compileJava
+
+# Set environment for GUI
+ENV DISPLAY=:0
+
+# Run the application
+CMD ["java", "-cp", "app/build/classes/java/main", "org.example.SAIDValidatorGUI"]
