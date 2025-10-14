@@ -1,8 +1,9 @@
 # SA ID Validator
 
 <p align="center">
-  <img src="/assets/pexels-thapelo-lekhuane-2154048373-34298339.jpg" alt="SA ID Validator Logo" width="400"/>
+  <img src="https://img.shields.io/badge/SA%20ID-Validator-%23007ACC?style=for-the-badge&logoColor=white&labelColor=white&color=007ACC" alt="SA ID Validator Badge" width="700"/>
 </p>
+
 
 <p align="center">
   A comprehensive South African ID validation system with multi-platform support
