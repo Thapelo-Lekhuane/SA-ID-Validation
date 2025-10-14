@@ -1,7 +1,7 @@
 # SA ID Validator
 
 <p align="center">
-  <img src="/public/images/logo.png" alt="SA ID Validator Logo" width="400"/>
+  <img src="/assets/logo.png" alt="SA ID Validator Logo" width="400"/>
 </p>
 
 <p align="center">
@@ -164,6 +164,7 @@ erDiagram
 ### Web Version
 
 No installation required! Simply open `index.html` in your browser or visit the live demo.
+
 
 ### Desktop Version (Java)
 
