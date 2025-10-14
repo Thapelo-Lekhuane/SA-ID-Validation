@@ -1,40 +1,11 @@
-
-
-
-
 # SA ID Validator
 
 <p align="center">
-  <img src="https://img.shields.io/badge/📇_SA_ID-VALIDATOR-2E8B57?style=for-the-badge&labelColor=20B2AA&color=2F4F4F&logoColor=white" alt="SA ID Validator" width="350"/>
+  <img src="/public/images/logo.png" alt="SA ID Validator Logo" width="400"/>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/🇿🇦_Professional_South_African-ID_Validation_System-20B2AA?style=flat&labelColor=2E8B57&color=20B2AA" alt="Professional System"/>
-</p>
-
-<p align="center">
-  A comprehensive South African ID validation system available as both a Java Swing desktop application and a modern web application.
-</p>
-
-
-
-
-
-<p align="center">
-  <a href="https://www.java.com/" target="_blank"><img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" alt="Java" /></a>
-  <a href="https://gradle.org/" target="_blank"><img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="Gradle" /></a>
-  <a href="https://junit.org/" target="_blank"><img src="https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white" alt="JUnit" /></a>
-  <a href="https://en.wikipedia.org/wiki/Swing_(Java)" target="_blank"><img src="https://img.shields.io/badge/Java%20Swing-5382A1?style=for-the-badge&logo=java&logoColor=white" alt="Java Swing" /></a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" /></a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" /></a>
-  <a href="https://www.docker.com/" target="_blank"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" /></a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/Thapelo-Lekhuane/SA-ID-Validation/stargazers" target="_blank"><img src="https://img.shields.io/github/stars/Thapelo-Lekhuane/SA-ID-Validation?style=social" alt="Stars" /></a>
-  <a href="https://github.com/Thapelo-Lekhuane/SA-ID-Validation/network" target="_blank"><img src="https://img.shields.io/github/forks/Thapelo-Lekhuane/SA-ID-Validation?style=social" alt="Forks" /></a>
-  <a href="https://github.com/Thapelo-Lekhuane/SA-ID-Validation/issues" target="_blank"><img src="https://img.shields.io/github/issues/Thapelo-Lekhuane/SA-ID-Validation" alt="Issues" /></a>
-  <a href="https://github.com/Thapelo-Lekhuane/SA-ID-Validation/blob/main/LICENSE" target="_blank"><img src="https://img.shields.io/github/license/Thapelo-Lekhuane/SA-ID-Validation" alt="License" /></a>
+  A comprehensive South African ID validation system with multi-platform support
 </p>
 
 ---
@@ -51,270 +22,282 @@
   <strong>📱 Scan QR Code or <a href="https://guileless-babka-1f8d24.netlify.app/" target="_blank">Click Here</a> to try the Live Web Version!</strong>
 </p>
 
+---
+
+## Tech Stack
+
 <p align="center">
-  <a href="https://guileless-babka-1f8d24.netlify.app/" target="_blank">
-    <img src="https://img.shields.io/badge/🌐_Live_Demo-Available-brightgreen?style=for-the-badge" alt="Live Demo" />
-  </a>
+  <a href="https://www.java.com/" target="_blank"><img src="https://img.shields.io/badge/Java_21-007396?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" /></a>
+  <a href="https://gradle.org/" target="_blank"><img src="https://img.shields.io/badge/Gradle_8.13-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="Gradle" /></a>
+  <a href="https://junit.org/" target="_blank"><img src="https://img.shields.io/badge/JUnit_5-25A162?style=for-the-badge&logo=junit5&logoColor=white" alt="JUnit" /></a>
+  <a href="https://en.wikipedia.org/wiki/Swing_(Java)" target="_blank"><img src="https://img.shields.io/badge/Java%20Swing-5382A1?style=for-the-badge&logo=java&logoColor=white" alt="Java Swing" /></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" /></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://img.shields.io/badge/JavaScript_ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" /></a>
+  <a href="https://www.docker.com/" target="_blank"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" /></a>
 </p>
 
 ---
 
-## 🚀 Quick Start Options
+## Overview
 
-### 🌐 Web Version (Instant Access)
-- **🔗 Live Demo**: [https://guileless-babka-1f8d24.netlify.app/](https://guileless-babka-1f8d24.netlify.app/)
-- **📱 Mobile Friendly**: Works perfectly on phones and tablets
-- **⚡ Features**: Professional web interface, validation history, real-time results
-- **🔧 Requirements**: Any modern web browser (Chrome, Firefox, Safari, Edge)
+SA ID Validator is a robust validation system for South African identification numbers. It provides instant verification of ID authenticity through multiple validation layers including date verification, gender identification, citizenship status, and Luhn algorithm checksum validation.
 
-### 🖥️ Desktop Version (Local)
-- **⚙️ Requirements**: Java 11+ and Gradle
-- **🖼️ Features**: Native GUI with Java Swing
-- **💻 Platform**: Windows, macOS, Linux
-
-### 🐳 Docker Version (Containerized)
-- **📦 Docker Hub**: [tman25/sa-id-validator](https://hub.docker.com/r/tman25/sa-id-validator)
-- **🖥️ Features**: Containerized desktop GUI with X11 forwarding
-- **⚙️ Requirements**: Docker Desktop
-
----
-
-## Project Overview
-
-SA ID Validator helps users quickly verify the validity of South African ID numbers by checking:
-
-* Correct **date of birth**
-* **Gender** digits
-* **Citizenship** status
-* **Checksum** using the **Luhn algorithm**
-
-Available in **three deployment options**:
-1. **🌐 Web Application** - Instant access via browser at [guileless-babka-1f8d24.netlify.app](https://guileless-babka-1f8d24.netlify.app/)
-2. **🖥️ Desktop Application** - Native Java Swing GUI
-3. **🐳 Docker Container** - Portable containerized deployment
-
----
+The project offers three deployment options:
+- **Web Version**: Pure JavaScript client-side validation
+- **Desktop Application**: Java Swing GUI application
+- **Docker Container**: Containerized deployment
 
 ## Features
 
-### ID Validation Logic
-
-* **Date of Birth Check** – Ensures valid `YYMMDD` date
-* **Gender Identification** – Determines gender from `SSSS` digits
-* **Citizenship Check** – Validates citizenship digit
-* **Checksum Verification** – Uses the Luhn algorithm for accuracy
-* **Instant Feedback** – Immediate validation results
-
-### User Interfaces
-
-#### 🌐 Web Application ([Live Demo](https://guileless-babka-1f8d24.netlify.app/))
-* **Modern responsive design** that works on desktop and mobile
-* **Professional interface** with validation history table
-* **Real-time validation** with detailed result display
-* **Cross-platform compatibility** - works on any device with a browser
-* **Instant access** - no installation required
-* **24/7 availability** - always accessible
-
-#### 🖥️ Desktop Application
-* Built with **Java Swing**
-* Lightweight and intuitive
-* Error prompts for invalid inputs
-* Native OS integration
-
-#### 🐳 Docker Container
-* **Cross-platform deployment** with GUI support
-* **X11 forwarding** for Linux/macOS
-* **Consistent environment** across different systems
+- **Date of Birth Validation** – Validates YYMMDD format with leap year support
+- **Gender Identification** – Extracts gender from sequence number
+- **Citizenship Status** – Validates citizenship indicator digit
+- **Luhn Algorithm Checksum** – Verifies mathematical integrity
+- **Format Validation** – Ensures exactly 13 numeric digits
+- **Multi-Platform Support** – Web, Desktop, and Docker
 
 ---
 
-## Technologies Used
+## Understanding SA ID Format
 
-<p align="center">
-  <a href="https://www.java.com/" target="_blank"><img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" alt="Java" /></a>
-  <a href="https://gradle.org/" target="_blank"><img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="Gradle" /></a>
-  <a href="https://junit.org/" target="_blank"><img src="https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white" alt="JUnit" /></a>
-  <a href="https://en.wikipedia.org/wiki/Swing_(Java)" target="_blank"><img src="https://img.shields.io/badge/Java%20Swing-5382A1?style=for-the-badge&logo=java&logoColor=white" alt="Java Swing" /></a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" /></a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" /></a>
-  <a href="https://www.docker.com/" target="_blank"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" /></a>
-  <a href="https://www.netlify.com/" target="_blank"><img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify" /></a>
-</p>
+South African ID numbers follow the format: **YYMMDDSSSSCAZ**
+
+### Structure Breakdown
+
+```
+Example: 8001015009087
+
+80     → Year of birth (1980)
+01     → Month (January)
+01     → Day (1st)
+5009   → Gender sequence (Male: 5000-9999, Female: 0000-4999)
+0      → Citizenship (0 = SA Citizen, 1 = Permanent Resident)
+8      → Race indicator (historical, no longer used)
+7      → Checksum digit (Luhn algorithm)
+```
+
+### Component Details
+
+| Position | Component | Description |
+|----------|-----------|-------------|
+| 1-2 | **YY** | Birth year (last 2 digits) |
+| 3-4 | **MM** | Birth month (01-12) |
+| 5-6 | **DD** | Birth day (01-31) |
+| 7-10 | **SSSS** | Gender sequence number |
+| 11 | **C** | Citizenship status |
+| 12 | **A** | Race indicator (obsolete) |
+| 13 | **Z** | Checksum digit |
 
 ---
 
-## How to Run the Project
+## Validation Logic Overview
 
-### 🌐 Web Version (Easiest & Recommended)
+The validation system performs the following checks:
 
-**🚀 Instant Access**: **[https://guileless-babka-1f8d24.netlify.app/](https://guileless-babka-1f8d24.netlify.app/)**
+1. **Format Validation** - Ensures exactly 13 numeric digits
+2. **Date Validation** - Validates YYMMDD format with leap year support
+3. **Gender Extraction** - Determines gender from sequence number (SSSS)
+4. **Citizenship Check** - Validates citizenship indicator digit
+5. **Luhn Algorithm** - Verifies checksum for mathematical integrity
 
-Or scan the QR code above with your mobile device! 📱
+### Luhn Algorithm
 
-### 🖥️ Desktop Version
+The Luhn algorithm validates the checksum digit (13th position):
 
-#### 1. Clone the repository
+**Steps:**
+1. Take first 12 digits
+2. Double every second digit from right to left
+3. If doubled digit > 9, subtract 9
+4. Sum all digits
+5. Checksum = (10 - (sum mod 10)) mod 10
 
+**Example for ID: 8001015009087**
+
+```
+Digits:    8  0  0  1  0  1  5  0  0  9  0  8
+Process:   8  0  0  2  0  2  5  0  0  18 0  16
+Simplify:  8  0  0  2  0  2  5  0  0  9  0  7
+Sum: 8+0+0+2+0+2+5+0+0+9+0+7 = 33
+Checksum: (10 - (33 % 10)) % 10 = 7 ✓
+```
+
+---
+
+## Entity Relationship Diagram
+
+```mermaid
+erDiagram
+    VALIDATION_LOG ||--|| ID_DETAILS : contains
+    VALIDATION_LOG }o--|| VALIDATION_STATUS : has
+    
+    VALIDATION_LOG {
+        int log_id PK
+        string id_number_hash
+        datetime validated_at
+        string ip_address
+        int status_id FK
+        int processing_time_ms
+    }
+    
+    ID_DETAILS {
+        int detail_id PK
+        int log_id FK
+        date birth_date
+        string gender
+        string citizenship
+        int age_at_validation
+    }
+    
+    VALIDATION_STATUS {
+        int status_id PK
+        string status_code UK
+        string status_description
+    }
+```
+
+*Note: ERD represents potential future database structure for logging and analytics*
+
+---
+
+## Quick Start
+
+### Web Version
+
+No installation required! Simply open `index.html` in your browser or visit the live demo.
+
+### Desktop Version (Java)
+
+**Requirements:**
+- Java 21 or higher
+- Gradle 8.13 (included via wrapper)
+
+**Run the application:**
+```bash
+# Clone repository
 git clone https://github.com/Thapelo-Lekhuane/SA-ID-Validation.git
 cd SA-ID-Validation
 
-text
+# Run using Gradle wrapper
+./gradlew :app:run
+```
 
-#### 2. Run the application
+### Docker Version
 
-./gradlew.bat :app:run
+```bash
+# Pull from Docker Hub
+docker pull tman25/sa-id-validator:latest
 
-text
-
-**Tip:** Make sure you have Java and Gradle installed, or use the included Gradle Wrapper (`gradlew.bat`).
-
-### 🐳 Docker Version
-
-#### Quick Run
-docker run -e DISPLAY=host.docker.internal:0.0 tman25/sa-id-validator:latest
-
-text
-
-#### With X11 (Linux/macOS)
-Allow X11 forwarding
+# Run with GUI (Linux)
 xhost +local:docker
-
-Run with GUI
-docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix tman25/sa-id-validator:latest
-
-text
-
----
-
-## Deployment Options
-
-### 🌐 Web Deployment
-- **Platform**: Netlify
-- **🔗 Live URL**: [https://guileless-babka-1f8d24.netlify.app/](https://guileless-babka-1f8d24.netlify.app/)
-- **✨ Features**: Instant access, mobile-responsive, validation history
-- **⏰ Uptime**: 24/7 availability
-- **📊 Performance**: Fast loading, global CDN
-
-### 🐳 Container Registry
-- **Docker Hub**: [tman25/sa-id-validator](https://hub.docker.com/r/tman25/sa-id-validator)
-- **📦 Image Size**: ~500MB
-- **🖥️ Platforms**: linux/amd64, linux/arm64
-- **🖼️ GUI Support**: X11 forwarding enabled
-
-### 📂 Source Code
-- **GitHub**: [Thapelo-Lekhuane/SA-ID-Validation](https://github.com/Thapelo-Lekhuane/SA-ID-Validation)
-- **💻 Language**: Java 21 + JavaScript ES6
-- **🔨 Build System**: Gradle
-- **📄 License**: MIT
+docker run -e DISPLAY=$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  tman25/sa-id-validator:latest
+```
 
 ---
 
 ## Project Structure
 
+```
 SA-ID-Validation/
-├── app/
-│ ├── src/
-│ │ ├── main/java/
-│ │ │ ├── ValidateSaId.java # Main validation logic
-│ │ │ ├── SaIdUtils.java # Utility functions
-│ │ │ └── GuiApp.java # Swing GUI entry point
-│ │ └── test/java/
-│ │ └── ValidateSaIdTest.java # Unit tests
-│ └── build.gradle # Module build config
-├── web-version/ # Web application files
-│ ├── index.html # Web UI
-│ └── script.js # Web validation logic
-├── index.html # Production web files (deployed)
-├── script.js # Production web logic (deployed)
-├── docker-compose.yml # Container orchestration
-├── Dockerfile # Container build instructions
-├── gradlew / gradlew.bat # Gradle wrapper
-├── settings.gradle # Root project settings
-└── README.md
-
-text
+├── app/                          # Java application
+│   ├── src/main/java/           # Java source code
+│   │   └── org/example/
+│   │       ├── ValidateSaId.java      # Core validation logic
+│   │       ├── SaIdUtils.java         # Utility functions
+│   │       └── GuiApp.java            # Swing GUI
+│   └── src/test/java/           # Unit tests
+│       └── org/example/
+│           └── ValidateSaIdTest.java
+├── web-version/                  # Web application
+│   ├── index.html               # HTML structure
+│   └── script.js                # JavaScript validation logic
+├── Dockerfile                    # Docker configuration
+├── docker-compose.yml           # Docker Compose setup
+└── README.md                    # This file
+```
 
 ---
 
-## SA ID Format Reference
+## Testing
 
-A valid South African ID number follows this format:
-**YYMMDDSSSSCAZ**
+### Valid Test Cases
 
-| Segment  | Meaning                                                      |
-| -------- | ------------------------------------------------------------ |
-| `YYMMDD` | Date of birth                                                |
-| `SSSS`   | Gender (0000–4999 = Female, 5000–9999 = Male)                |
-| `C`      | Citizenship (0 = SA Citizen, 1 = Permanent Resident)         |
-| `A`      | Usually 8 or 9 (indicates race historically, no longer used) |
-| `Z`      | Checksum (calculated using Luhn algorithm)                   |
+| ID Number | Gender | DOB | Citizenship | Age |
+|-----------|--------|-----|-------------|-----|
+| 8001015009087 | Male | 01/01/1980 | SA Citizen | 45 |
+| 7506235016088 | Male | 23/06/1975 | SA Citizen | 50 |
+| 0203200145088 | Female | 20/03/2002 | SA Citizen | 23 |
+| 9502290001081 | Female | 29/02/1995 | SA Citizen | 30 |
 
----
+### Invalid Test Cases
 
-## Entity Relationship Diagram (ERD)
+| ID Number | Reason |
+|-----------|--------|
+| 1234567890123 | Invalid checksum |
+| 12345 | Too short |
+| abcd567890123 | Contains letters |
+| 9902316257080 | Invalid date (Feb 31) |
+| 8013015009087 | Invalid month (13) |
 
-### Mermaid ERD
+### Run Tests
 
-erDiagram
-USER ||--o{ VALIDATION_LOG : performs
-USER {
-int user_id
-string username
-string email
-}
-VALIDATION_LOG {
-string id_number
-string birth_date
-string gender
-string citizenship
-boolean is_valid
-datetime validated_at
-}
+```bash
+# Java tests
+./gradlew test
 
-text
-
-### ERD Summary
-
-* Each **User** can perform multiple **ID validations**
-* Each **Validation Log** stores details like ID number, gender, citizenship, and validity result
-* Future upgrades could include database storage or analytics dashboards
+# View test report
+open app/build/reports/tests/test/index.html
+```
 
 ---
 
-## 🧪 Testing Examples
+## Technologies
 
-Try these test cases in the [**Live Web Version**](https://guileless-babka-1f8d24.netlify.app/):
-
-| ID Number      | Expected Result | Details                           |
-|---------------|-----------------|-----------------------------------|
-| 8001015009087 | ✅ Valid        | Male, 44 years, SA Citizen      |
-| 7506235016088 | ✅ Valid        | Female, 49 years, SA Citizen    |
-| 9908236257080 | ✅ Valid        | Male, 26 years, SA Citizen      |
-| 1234567890123 | ❌ Invalid      | Fails Luhn checksum             |
-| 12345         | ❌ Invalid      | Too short (must be 13 digits)   |
-
-**🚀 [Test them now in the live web app!](https://guileless-babka-1f8d24.netlify.app/)**
+- **Java 21** - Core validation logic and desktop application
+- **Gradle 8.13** - Build automation and dependency management
+- **JUnit 5** - Unit testing framework
+- **Java Swing** - Desktop GUI framework
+- **HTML5 / CSS3 / JavaScript ES6+** - Web version (client-side)
+- **Docker** - Containerization and deployment
 
 ---
 
-## Credits
+## Contributing
 
-Developed by **Thapelo Lekhuane**
+Contributions are welcome! Please follow these steps:
 
-- **GitHub**: [@Thapelo-Lekhuane](https://github.com/Thapelo-Lekhuane)
-- **LinkedIn**: [Thapelo Lekhuane](https://linkedin.com/in/thapelo-lekhuane)
-- **Email**: thapelolekhuane2@gmail.com
-- **🌐 Live Project**: [SA ID Validator Web App](https://guileless-babka-1f8d24.netlify.app/)
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Feedback & Contributions
+## Author
 
-Pull requests and issues are welcome!
-Feel free to fork the repo and improve or expand it.
+**Thapelo Lekhuane**
 
-**🌟 Star this repository if you find it useful!**
-
-**🔗 Try the live web version: [guileless-babka-1f8d24.netlify.app](https://guileless-babka-1f8d24.netlify.app/)**
+- GitHub: [@Thapelo-Lekhuane](https://github.com/Thapelo-Lekhuane)
+- Email: thapelolekhuane2@gmail.com
 
 ---
+
+## Acknowledgments
+
+- South African Department of Home Affairs for ID format specification
+- Java and JavaScript communities for excellent documentation
+- Open source contributors
+
+---
+
+<p align="center">
+  Made with ❤️ in South Africa 🇿🇦
+</p>
