@@ -1,7 +1,7 @@
 # SA ID Validator
 
 <p align="center">
-  <img src="/public/images/logo1.png" alt="SA ID Validator Logo" width="400"/>
+  <img src="/assets/pexels-thapelo-lekhuane-2154048373-34298339.jpg" alt="SA ID Validator Logo" width="400"/>
 </p>
 
 <p align="center">
