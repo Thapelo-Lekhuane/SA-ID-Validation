@@ -1,0 +1,32 @@
+# CodeRabbit Configuration for SA-ID-Validation
+reviews:
+  auto_review:
+    enabled: true
+  high_level_summary: true
+  review_status: true
+  
+  # Path filters - include your src directory
+  path_filters:
+    # Include these paths
+    - "src/**"
+    - "*.js"
+    - "*.jsx" 
+    - "*.ts"
+    - "*.tsx"
+    - "*.md"
+    - "*.json"
+    
+    # Exclude these paths (optional)
+    - "!node_modules/**"
+    - "!dist/**"
+    - "!build/**"
+    - "!coverage/**"
+    - "!*.min.js"
+
+language_tools:
+  eslint:
+    enabled: true
+  prettier:
+    enabled: true
+    
+tone_instructions: "Focus on JavaScript best practices, security, and code quality for SA ID validation system."
