@@ -1,8 +1,9 @@
 # SA ID Validator
 
 <p align="center">
-  <img src="https://img.shields.io/badge/SA%20ID-Validator-%23007ACC?style=for-the-badge&logoColor=white&labelColor=white&color=007ACC" alt="SA ID Validator Badge" width="700"/>
+  <img src="/public/logoSA.png" width="450" alt="PeerSphere Logo" />
 </p>
+
 
 
 <p align="center">
