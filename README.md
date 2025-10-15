@@ -1,7 +1,7 @@
 # SA ID Validator
 
 <p align="center">
-  <img src="/public/logoSA.png" width="500" alt="PeerSphere Logo" />
+  <img src="/public/logoSA.png" width="450" alt="PeerSphere Logo" />
 </p>
 
 
