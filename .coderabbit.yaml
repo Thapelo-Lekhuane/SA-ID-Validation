@@ -1,57 +1,32 @@
-# CodeRabbit Configuration for PeerSphere
+# CodeRabbit Configuration for SA-ID-Validation
 reviews:
-  # Enable automatic reviews
   auto_review:
     enabled: true
+  high_level_summary: true
+  review_status: true
   
-  # Path filtering for focused reviews
+  # Path filters - include your src directory
   path_filters:
     # Include these paths
-    - "client/src/**"
-    - "server/**" 
-    - "*.md"
-    - "*.json"
+    - "src/**"
     - "*.js"
-    - "*.jsx"
+    - "*.jsx" 
     - "*.ts"
     - "*.tsx"
+    - "*.md"
+    - "*.json"
     
-    # Exclude these paths
+    # Exclude these paths (optional)
     - "!node_modules/**"
-    - "!client/dist/**"
-    - "!client/build/**"
-    - "!*.min.js"
+    - "!dist/**"
+    - "!build/**"
     - "!coverage/**"
-    - "!.husky/**"
+    - "!*.min.js"
 
-  # Review settings
-  request_changes_workflow: false
-  high_level_summary: true
-  poem: true
-  review_status: true
-  collapse_empty_files: true
-
-# Language-specific tools
 language_tools:
-  # Frontend
   eslint:
     enabled: true
   prettier:
     enabled: true
-  
-  # Security
-  gitleaks:
-    enabled: true
-  
-  # YAML validation
-  yamllint:
-    enabled: true
-
-# Tone and style
-tone_instructions: "Be helpful and constructive. Focus on code quality, security, and best practices for a secure tutoring platform with escrow payments."
-
-# Auto-apply labels based on changes
-auto_apply_labels: true
-
-# Suggest reviewers
-suggested_reviewers: true
+    
+tone_instructions: "Focus on JavaScript best practices, security, and code quality for SA ID validation system."
