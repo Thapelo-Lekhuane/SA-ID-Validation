@@ -1,0 +1,57 @@
+# CodeRabbit Configuration for PeerSphere
+reviews:
+  # Enable automatic reviews
+  auto_review:
+    enabled: true
+  
+  # Path filtering for focused reviews
+  path_filters:
+    # Include these paths
+    - "client/src/**"
+    - "server/**" 
+    - "*.md"
+    - "*.json"
+    - "*.js"
+    - "*.jsx"
+    - "*.ts"
+    - "*.tsx"
+    
+    # Exclude these paths
+    - "!node_modules/**"
+    - "!client/dist/**"
+    - "!client/build/**"
+    - "!*.min.js"
+    - "!coverage/**"
+    - "!.husky/**"
+
+  # Review settings
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: true
+  review_status: true
+  collapse_empty_files: true
+
+# Language-specific tools
+language_tools:
+  # Frontend
+  eslint:
+    enabled: true
+  prettier:
+    enabled: true
+  
+  # Security
+  gitleaks:
+    enabled: true
+  
+  # YAML validation
+  yamllint:
+    enabled: true
+
+# Tone and style
+tone_instructions: "Be helpful and constructive. Focus on code quality, security, and best practices for a secure tutoring platform with escrow payments."
+
+# Auto-apply labels based on changes
+auto_apply_labels: true
+
+# Suggest reviewers
+suggested_reviewers: true
